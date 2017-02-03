@@ -1,0 +1,30 @@
+retornar {
+	/* tipos de texto */
+	"marcado": cadena.char(27).."[;7m",
+	"bold": cadena.char(27).."[;1m",
+	"subrayado": cadena.char(27).."[;4m",
+	"italicas": cadena.char(27).."[;3m",
+
+	/* resetear el color */
+	"reset": cadena.char(27).."[;0m",
+
+	/* colores normales */
+	"amarillo": cadena.char(27).."[;33m",
+	"blanco": cadena.char(27).."[;37m",
+	"purpura": cadena.char(27).."[;35m",
+	"rojo": cadena.char(27).."[;31m",
+	"cyan": cadena.char(27).."[;36m",
+	"verde": cadena.char(27).."[;32m",
+	"azul": cadena.char(27).."[;34m",
+	"negro": cadena.char(27).."[;30m",
+
+	/* colores resaltados */
+	"r_amarillo": cadena.char(27).."[1;33m",
+	"r_blanco": cadena.char(27).."[;1;37m",
+	"r_purpura": cadena.char(27).."[;1;35m",
+	"r_rojo": cadena.char(27).."[;1;31m",
+	"r_cyan": cadena.char(27).."[;1;36m",
+	"r_verde": cadena.char(27).."[;1;32m",
+	"r_azul": cadena.char(27).."[;1;34m",
+	"r_negro": cadena.char(27).."[;1;30m"
+}
