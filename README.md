@@ -43,6 +43,7 @@ Ejemplo:
 ```c
 simp("bt.azul") // usé los parámetros 'b' para bold y 't' para tachado (ver arriba) y elegí el color azul
 ```
+No importa como acomodes los argumentos, no deben tener un orden específico.
 
 ## Color personalizado
 Imprime los colores con `colores()`<br>
