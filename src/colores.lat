@@ -1,30 +1,60 @@
-retornar {
-	/* tipos de texto */
-	"marcado": cadena.char(27).."[;7m",
-	"bold": cadena.char(27).."[;1m",
-	"subrayado": cadena.char(27).."[;4m",
-	"italicas": cadena.char(27).."[;3m",
+VERSION = 1.0
+NAME = "Colores"
 
+escp = funcion(params) retornar cadena.char(27).."["..params.."m" fin
+
+colores = funcion()
+	escp = funcion (params) retornar cadena.char(27).."["..params.."m" fin
+	desde (i=1; i<256; i++)
+		imprimirf(escp("30;48;5;"..i).."["..i.."]"..escp(0))
+		si (((i-16) % 6) == 0) imprimirf("\n") sino imprimirf(" ") fin
+	fin
+	imprimirf("\n"..escp(0))
+	retornar cadena.char(0)
+fin
+
+color = funcion(n)
+	escp = funcion (params) retornar cadena.char(27).."["..params.."m" fin
+	retornar escp("38;5;"..n)
+fin
+
+retornar {
 	/* resetear el color */
-	"reset": cadena.char(27).."[;0m",
+	"reset": escp(0),
+
+	/* tipos de texto */
+	"bold": escp(1),
+	"bajo": escp(2),
+	"italicas": escp(3),
+	"subrayado": escp(4),
+	"parpadea": escp(5),
+	"marcado": escp(7),
+	"tachado": escp(9),
 
 	/* colores normales */
-	"amarillo": cadena.char(27).."[;33m",
-	"blanco": cadena.char(27).."[;37m",
-	"purpura": cadena.char(27).."[;35m",
-	"rojo": cadena.char(27).."[;31m",
-	"cyan": cadena.char(27).."[;36m",
-	"verde": cadena.char(27).."[;32m",
-	"azul": cadena.char(27).."[;34m",
-	"negro": cadena.char(27).."[;30m",
+	"negro": escp(30),
+	"rojo": escp(31),
+	"verde": escp(32),
+	"amarillo": escp(33),
+	"azul": escp(34),
+	"purpura": escp(35),
+	"cyan": escp(36),
+	"blanco": escp(37),
+	"rosa": escp("38;5;197"),
+	"naranja": escp("38;5;208"),
 
 	/* colores resaltados */
-	"r_amarillo": cadena.char(27).."[1;33m",
-	"r_blanco": cadena.char(27).."[;1;37m",
-	"r_purpura": cadena.char(27).."[;1;35m",
-	"r_rojo": cadena.char(27).."[;1;31m",
-	"r_cyan": cadena.char(27).."[;1;36m",
-	"r_verde": cadena.char(27).."[;1;32m",
-	"r_azul": cadena.char(27).."[;1;34m",
-	"r_negro": cadena.char(27).."[;1;30m"
+	"r_negro": escp("1;30"),
+	"r_rojo": escp("1;31"),
+	"r_verde": escp("1;32"),
+	"r_amarillo": escp("1;33"),
+	"r_azul": escp("1;34"),
+	"r_purpura": escp("1;35"),
+	"r_cyan": escp("1;36"),
+	"r_blanco": escp("1;37"),
+
+	/* herramientas */
+	"colores": colores,
+	"color": color,
+	"version": VERSION.." "..NAME
 }
