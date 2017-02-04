@@ -7,7 +7,7 @@ colores = funcion()
 		si (((i-16) % 6) == 0) imprimirf("\n") sino imprimirf(" ") fin
 	fin
 	imprimirf("\n"..escp(0))
-	retornar cadena.char(0)
+	retornar nulo
 fin
 
 color = funcion(n)
