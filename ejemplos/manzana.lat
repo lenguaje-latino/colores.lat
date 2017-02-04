@@ -12,4 +12,4 @@ imprimirf(color.r_verde.."\t  ,
  ::::::::::::::
   ::::::::::::
    ::::::::::
-     :::"..color.amarillo..":"..color.r_rojo..":::\n")
+     :::"..color.amarillo..":"..color.r_rojo..":::\n"..color.reset)
