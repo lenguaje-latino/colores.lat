@@ -16,6 +16,7 @@ color = funcion(n)
 fin
 
 funcion tipo_color(color)
+	separador = '.'
 	escp = funcion (params) retornar cadena.char(27).."["..params.."m" fin
 	colores_disponibles = [
 	"negro",
@@ -29,9 +30,9 @@ funcion tipo_color(color)
 	"rosa",
 	"naranja"
 	]
-	colmat = cadena.match(color, "([[:alnum:]]+)\.([[:alnum:]]+)")
+	colmat = cadena.match(color, "([[:alnum:]]+)"..separador.."([[:alnum:]]+)")
 	color_ = "0"
-	si lista.contiene(colores_disponibles, colmat[0][2])
+	si lista.contiene(colores_disponibles, colmat[0][2]) || anumero(colmat[0][2])
 		desde (i=0; i<cadena.longitud(colmat[0][1]); i++)
 			elegir(colmat[0][1][i])
 			caso 'b':
@@ -49,6 +50,10 @@ funcion tipo_color(color)
 			caso 't':
 				color_ ..= ";9"
 			fin
+		fin
+		si anumero(colmat[0][2])
+			color_ = escp(color_..";".."38;5;"..colmat[0][2])
+			retornar color_
 		fin
 		elegir(colmat[0][2])
 		caso "negro": color_ = escp(color_..";"..30)
