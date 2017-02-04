@@ -1,6 +1,3 @@
-VERSION = 1.0
-NAME = "Colores"
-
 escp = funcion(params) retornar cadena.char(27).."["..params.."m" fin
 
 colores = funcion()
@@ -18,13 +15,65 @@ color = funcion(n)
 	retornar escp("38;5;"..n)
 fin
 
+funcion tipo_color(color)
+	escp = funcion (params) retornar cadena.char(27).."["..params.."m" fin
+	colores_disponibles = [
+	"negro",
+	"rojo",
+	"verde",
+	"amarillo",
+	"azul",
+	"purpura",
+	"cyan",
+	"blanco",
+	"rosa",
+	"naranja"
+	]
+	colmat = cadena.match(color, "([[:alnum:]]+)\.([[:alnum:]]+)")
+	color_ = "0"
+	si lista.contiene(colores_disponibles, colmat[0][2])
+		desde (i=0; i<cadena.longitud(colmat[0][1]); i++)
+			elegir(colmat[0][1][i])
+			caso 'b':
+				color_ ..= ";1"
+			caso 'l':
+				color_ ..= ";2"
+			caso 'i':
+				color_ ..= ";3"
+			caso 's':
+				color_ ..= ";4"
+			caso 'p':
+				color_ ..= ";5"
+			caso 'm':
+				color_ ..= ";7"
+			caso 't':
+				color_ ..= ";9"
+			fin
+		fin
+		elegir(colmat[0][2])
+		caso "negro": color_ = escp(color_..";"..30)
+		caso "rojo": color_ = escp(color_..";"..31)
+		caso "verde": color_ = escp(color_..";"..32)
+		caso "amarillo": color_ = escp(color_..";"..33)
+		caso "azul": color_ = escp(color_..";"..34)
+		caso "purpura": color_ = escp(color_..";"..35)
+		caso "cyan": color_ = escp(color_..";"..36)
+		caso "blanco": color_ = escp(color_..";"..37)
+		caso "rosa": color_ = escp(color_..";".."38;5;197")
+		caso "naranja": color_ = escp(color_..";".."38;5;208")
+		fin
+		retornar color_
+	fin
+	retornar falso
+fin
+
 retornar {
 	/* resetear el color */
 	"reset": escp(0),
 
 	/* tipos de texto */
 	"bold": escp(1),
-	"bajo": escp(2),
+	"ligero": escp(2),
 	"italicas": escp(3),
 	"subrayado": escp(4),
 	"parpadea": escp(5),
@@ -52,9 +101,11 @@ retornar {
 	"r_purpura": escp("1;35"),
 	"r_cyan": escp("1;36"),
 	"r_blanco": escp("1;37"),
+	"r_rosa": escp("1;38;5;197"),
+	"r_naranja": escp("1;38;5;208"),
 
 	/* herramientas */
 	"colores": colores,
-	"color": color,
-	"version": VERSION.." "..NAME
+	"simp": tipo_color,
+	"color": color
 }
