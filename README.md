@@ -43,15 +43,26 @@ Ejemplo:
 ```c
 simp("bt.azul") // usé los parámetros 'b' para bold y 't' para tachado (ver arriba) y elegí el color azul
 ```
+
 ## Color personalizado
 Imprime los colores con `colores()`<br>
 Ahora nos saldrán cuadros de colores con el número de color, por ejemplo, vemos un cuadro rosa, tiene el número **162**<br>
 Ahora ejecutamos el color con `color(162)`
 
+Igual podemos usar ese color con formato 'simp'.<br>
+Ejemplo:
+```c
+simp("bim.227") // retorna color amarillo
+```
+
 ## Ejemplo
 ```c
 color = incluir("colores")
-imprimir(color.verde.."hola"..color.reset) // imprimimos 'hola' en color verde y reseteamos el color.
-imprimir(color.simp("im.azul").."hola"..color.reset) // imprimimos 'hola' con formato, eligiendo i: italicas y m: marcado
+imprimirf("Hola en verde: "..color.verde.."hola"..color.reset.."\n") // imprimimos 'hola' en color verde y reseteamos el color.
+imprimirf("Color azul con formato: "..color.simp("im.azul").."hola"..color.reset.."\n") // imprimimos 'hola' con formato, eligiendo i: italicas y m: marcado
+imprimirf("Tabla de colores:\n")
+color.colores() // imprime la tabla de colores
+imprimirf("Violeta con formato: " ..color.simp("im.128").."hola"..color.reset.."\n") // imprimimos texto violeta, el color/número '128' lo tomamos de la tabla de colores, argumentos: 'm': marcado, 'i': italicas
+imprimirf("Violeta normal: "..color.color(128).."hola"..color.reset.."\n") // imprimimos el color violeta '128' de la tabla de colores
 ```
 
