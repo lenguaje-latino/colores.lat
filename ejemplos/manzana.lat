@@ -1,0 +1,15 @@
+color = incluir("colores")
+
+imprimirf(color.r_verde.."\t  ,
+         ,,
+         ,
+        ::
+        ::"..color.r_rojo.."
+  .:::::::::::. 
+.::::::::::::::.
+::::::::::::::::
+::::::::::::::::  "..color.reset..color.bold.." MANZANA "..color.r_rojo.."
+ ::::::::::::::
+  ::::::::::::
+   ::::::::::
+     :::"..color.amarillo..":"..color.r_rojo..":::\n")
